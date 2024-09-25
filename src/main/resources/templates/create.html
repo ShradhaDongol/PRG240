@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <title>Create User</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,8 +19,8 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+            width: 300px;
+            max-width: 100%;
         }
 
         h1 {
@@ -40,6 +40,7 @@
             color: #555;
         }
 
+        input[type="text"],
         input[type="email"],
         input[type="password"] {
             padding: 10px;
@@ -49,7 +50,7 @@
         }
 
         input[type="submit"] {
-            background-color: #007bff;
+            background-color: #28a745;
             color: #fff;
             border: none;
             padding: 10px;
@@ -59,51 +60,35 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
 
-        .message {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .message p {
-            color: #d9534f;
-        }
-
-        .message p.success {
-            color: #5bc0de;
-        }
-
-        a {
+        .back-link {
             display: block;
             text-align: center;
+            margin-top: 15px;
             text-decoration: none;
             color: #007bff;
-            font-weight: bold;
-            margin-top: 20px;
         }
 
-        a:hover {
+        .back-link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Login</h1>
-    <form action="/login" method="post">
+    <h1>Create User</h1>
+    <form action="/create" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
-        <input type="submit" value="Login">
+        <input type="submit" value="Create User">
     </form>
-    <div class="message" th:if="${isAuthenticated != null}">
-        <p th:if="${isAuthenticated}" class="success">Authenticated</p>
-        <p th:if="${!isAuthenticated}">Authentication failed</p>
-    </div>
-    <a href="/">Back to Home</a>
+    <a class="back-link" href="/">Back to Home</a>
 </div>
 </body>
 </html>
